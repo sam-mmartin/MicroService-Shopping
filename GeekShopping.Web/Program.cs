@@ -3,6 +3,13 @@ using GeekShopping.Web.Services.IServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var mvcbuilder = builder.Services.AddRazorPages();
+
+if (builder.Environment.IsDevelopment())
+{
+   mvcbuilder.AddRazorRuntimeCompilation();
+}
+
 builder.Services.AddHttpClient<IProductService, ProductService>(
              c => c.BaseAddress = new Uri(builder.Configuration["ServiceUrls:ProductAPI"])
          );

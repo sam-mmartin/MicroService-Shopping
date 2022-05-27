@@ -12,7 +12,7 @@ public class ProductController : Controller
       _productService = productService ?? throw new ArgumentNullException(nameof(productService));
    }
 
-   public async Task<IActionResult> Product()
+   public async Task<IActionResult> Products()
    {
       var products = await _productService.FindAllProducts();
       return View(products);
