@@ -66,4 +66,17 @@ public class ProductController : Controller
 
       return View(model);
    }
+
+   [HttpPost]
+   public async Task<IActionResult> Delete(int id)
+   {
+      var response = await _productService.DeleteProductById(id);
+
+      if (response)
+      {
+         return RedirectToAction(nameof(Products));
+      }
+
+      return BadRequest("Erro ao excluir produto!");
+   }
 }
